@@ -101,6 +101,9 @@ $(document).ready(function () {
 							};
 							$.post(apiURL+"developer", developer).fail(() => {
 								alert("SOMETHING WENT WHOLE WRONG POST");
+							}).done(() => {
+								// Because the API is...... slow
+								setTimeout(renderPageItem(pageItem), 500); 
 							});
 						};
 
