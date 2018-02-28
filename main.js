@@ -53,6 +53,27 @@ $(document).ready(function () {
 						tr.insertBefore(td, clone.querySelector("button").parentElement);
 					}
 				}
+				const button = clone.querySelector("button");
+						button.onclick = () => {
+							// Clear the template
+							document.getElementById("edit-modal-template").parentElement.innerHTML = document.getElementById("edit-modal-template").outerHTML;
+							const modalTemplate = document.getElementById("edit-modal-template");
+							const modalContent = modalTemplate.content;
+							const modalParent = modalTemplate.parentElement;
+							for (const prop in dp) {
+								if (dp.hasOwnProperty(prop)) {
+									console.log("NOGET", prop);
+									const value = dp[prop];
+									const clone = modalContent.cloneNode(true);
+									
+									clone.querySelector("p").innerText = prop;
+									const inp = clone.querySelector("input");
+									inp.setAttribute("placeholder", value);
+									inp.setAttribute("id", "input-"+prop);
+									modalParent.appendChild(clone);
+								}
+							}
+						};
 				rowParent.appendChild(clone);
 			});
 			
