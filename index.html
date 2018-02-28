@@ -1,58 +1,89 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Centisoft Time Tracking</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	 crossorigin="anonymous"></script>
 	<script src="main.js"></script>
+
 </head>
+
 <body>
-	<div class="container-fluid"> <!-- class="container-fluid" if we dont want to center -->
-			<nav class="navbar navbar-expand navbar-light bg-light">
-				<a class="navbar-brand" href="/index.html">Centisoft</a>
+	<div class="container-fluid">
+		<!-- class="container-fluid" if we dont want to center -->
+		<nav class="navbar navbar-expand navbar-light bg-light">
+			<a class="navbar-brand" href="/index.html">Centisoft</a>
 
-				<div class="collapse navbar-collapse">
-					<ul class="navbar-nav nav-auto">
-						<template id="nav-item-template">
-							<li class="nav-item">
-								<a class="nav-link" href="#"></a>
-							</li>
-						</template>
-					</ul>
-				</div>
-
-			</nav>
-
-			<div id="dataview">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<template id="table-header-template">
-									<th></th>
-								</template>
-							</tr>
-						</thead>
-
-						<tbody>
-							<template id="table-row-template">
-								<tr>
-									<!-- <th scope="row">row halløj</th> -->
-									<!-- <td></td> -->
-									<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-											edit
-									</button></td>
-								</tr>
-							</template>
-						</tbody>
-					</table>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav nav-auto">
+					<template id="nav-item-template">
+						<li class="nav-item">
+							<a class="nav-link" href="#"></a>
+						</li>
+					</template>
+				</ul>
 			</div>
+
+		</nav>
+
+		<div id="dataview">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<template id="table-header-template">
+							<th></th>
+						</template>
+					</tr>
+				</thead>
+
+				<tbody>
+					<template id="table-row-template">
+						<tr>
+							<!-- <th scope="row">row halløj</th> -->
+							<!-- <td></td> -->
+							<td>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
+									edit
+								</button>
+							</td>
+						</tr>
+					</template>
+				</tbody>
+			</table>
+		</div>
 	</div>
-	
+	<!-- Modal -->
+	<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>

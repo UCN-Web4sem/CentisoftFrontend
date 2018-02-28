@@ -49,8 +49,8 @@ $(document).ready(function () {
 						const value = dp[key];
 						const td = document.createElement("td");
 						td.innerText = value;
+						// works like appendChild but makes sure our edit button is the last td in the tr
 						tr.insertBefore(td, clone.querySelector("button").parentElement);
-						//tr.appendChild(td);
 					}
 				}
 				rowParent.appendChild(clone);
