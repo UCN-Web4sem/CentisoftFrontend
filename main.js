@@ -33,6 +33,9 @@ $(document).ready(function () {
 				clone.querySelector("th").innerText = key;
 				headerParent.appendChild(clone);
 			});
+			const thClone = headerContent.cloneNode(true);
+			thClone.querySelector("th").innerText = "Edit";
+			headerParent.appendChild(thClone);
 
 
 			const rowTemplate = document.getElementById("table-row-template");
