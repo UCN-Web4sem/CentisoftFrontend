@@ -23,22 +23,34 @@ $(document).ready(function () {
 		function renderDataView(datapoints) {
 			if (datapoints.length < 1) return;
 
-			var headerTemplate = document.getElementById("table-header-template");
-			var headerParent = headerTemplate.parentElement;
-			var headerContent = headerTemplate.content;
+			const headerTemplate = document.getElementById("table-header-template");
+			const headerParent = headerTemplate.parentElement;
+			const headerContent = headerTemplate.content;
 
-			var keys = Object.keys(datapoints[0]);
+			const keys = Object.keys(datapoints[0]);
 			keys.forEach(key => {
-				var clone = headerContent.cloneNode(true);
+				const clone = headerContent.cloneNode(true);
 				clone.querySelector("th").innerText = key;
 				headerParent.appendChild(clone);
 			});
 
 
-			var rowTemplate = document.getElementById("table-row-template");
-			var rowParent = rowTemplate.parentElement;
-			var rowContent = rowTemplate.content;
-
+			const rowTemplate = document.getElementById("table-row-template");
+			const rowParent = rowTemplate.parentElement;
+			const rowContent = rowTemplate.content;
+			datapoints.forEach(dp => {
+				const clone = rowContent.cloneNode(true);
+				const tr = clone.querySelector("tr");
+				for (const key in dp) {
+					if (dp.hasOwnProperty(key)) {
+						const value = dp[key];
+						const td = document.createElement("td");
+						td.innerText = value;
+						tr.appendChild(td);
+					}
+				}
+				rowParent.appendChild(clone);
+			});
 			
 		}
 
