@@ -13,7 +13,7 @@ $(document).ready(function () {
 
 	function renderPageItem(pageItem) {
 		function getAllDevelopers(cb) {
-			$.get(apiURL+pageItem, (data) => {
+			$.get(apiURL + pageItem, (data) => {
 				cb(null, data);
 			}).fail((err) => {
 				cb(err, null);
@@ -54,29 +54,28 @@ $(document).ready(function () {
 					}
 				}
 				const button = clone.querySelector("button");
-						button.onclick = () => {
-							// Clear the template
-							document.getElementById("edit-modal-template").parentElement.innerHTML = document.getElementById("edit-modal-template").outerHTML;
-							const modalTemplate = document.getElementById("edit-modal-template");
-							const modalContent = modalTemplate.content;
-							const modalParent = modalTemplate.parentElement;
-							for (const prop in dp) {
-								if (dp.hasOwnProperty(prop)) {
-									console.log("NOGET", prop);
-									const value = dp[prop];
-									const clone = modalContent.cloneNode(true);
-									
-									clone.querySelector("p").innerText = prop;
-									const inp = clone.querySelector("input");
-									inp.setAttribute("placeholder", value);
-									inp.setAttribute("id", "input-"+prop);
-									modalParent.appendChild(clone);
-								}
-							}
-						};
+				button.onclick = () => {
+					// Clear the template
+					document.getElementById("edit-modal-template").parentElement.innerHTML = document.getElementById("edit-modal-template").outerHTML;
+					const modalTemplate = document.getElementById("edit-modal-template");
+					const modalContent = modalTemplate.content;
+					const modalParent = modalTemplate.parentElement;
+					for (const prop in dp) {
+						if (dp.hasOwnProperty(prop)) {
+							const value = dp[prop];
+							const clone = modalContent.cloneNode(true);
+							clone.querySelector("p").innerText = prop;
+							const inp = clone.querySelector("input");
+							inp.setAttribute("placeholder", value);
+							inp.setAttribute("id", "input-" + prop);
+							modalParent.appendChild(clone);
+						}
+					}
+				};
+
 				rowParent.appendChild(clone);
 			});
-			
+
 		}
 
 		return () => {
@@ -90,10 +89,24 @@ $(document).ready(function () {
 					getAllDevelopers((err, data) => {
 						if (err != null) console.log(err);
 						renderDataView(data);
-						
-					})
+						document.getElementById("btn-save").onclick = () => {
+							const id = document.getElementById("input-Id").value;
+							const name = document.getElementById("input-Name").value;
+							const email = document.getElementById("input-Email").value;
+							// TODO: document.getElementById("input-Tasks");
+							const developer = {
+								"Id":parseInt(id, 10),
+								"Name":name,
+								"Email":email,
+							};
+							$.post(apiURL+"developer", developer).fail(() => {
+								alert("SOMETHING WENT WHOLE WRONG POST");
+							});
+						};
+
+					});
 					break;
-			
+
 				default:
 					break;
 			}
