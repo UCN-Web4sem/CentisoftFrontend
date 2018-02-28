@@ -66,6 +66,7 @@ $(document).ready(function () {
 							const clone = modalContent.cloneNode(true);
 							clone.querySelector("p").innerText = prop;
 							const inp = clone.querySelector("input");
+							inp.value = value;
 							inp.setAttribute("placeholder", value);
 							inp.setAttribute("id", "input-" + prop);
 							modalParent.appendChild(clone);
