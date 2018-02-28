@@ -49,7 +49,8 @@ $(document).ready(function () {
 						const value = dp[key];
 						const td = document.createElement("td");
 						td.innerText = value;
-						tr.appendChild(td);
+						tr.insertBefore(td, clone.querySelector("button").parentElement);
+						//tr.appendChild(td);
 					}
 				}
 				rowParent.appendChild(clone);
